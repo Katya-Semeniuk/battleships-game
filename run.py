@@ -72,52 +72,73 @@ def valid_coordinates(x, y, board):
 def populate_board(board):
     """ Populating board for computer and for player.
     Using a random number from the random_point function, ships are added to the board"""
-    x = random_point(board.size)
-    y = random_point(board.size)
-    if (x, y) not in board.ships:
-        board.add_ships(x, y)
-    
-    
-   
-
-def make_guess(board):
-    if board.type == 'computer':
+    while True:
         x = random_point(board.size)
         y = random_point(board.size)
-        return x, y
-    else:
-        row = input("Guess a row: \n")
-        column = input("Guess a column: \n")
-
-        if valid_coordinates(row, column, board):
-                return int(row), int(column)
-            
-        else:
-             print('Input IS NOT correct')       
+        if (x, y) not in board.ships:
+            board.add_ships(x, y)
+            break      
+       
+     
            
+def make_guess(board):
+    while True:
+        if board.type == 'computer':
+            x = random_point(board.size)
+            y = random_point(board.size)
+            return x, y
+        else:
+            row = input("Guess a row: \n")
+            column = input("Guess a column: \n")
+
+            if valid_coordinates(row, column, board):
+                return int(row), int(column)
+            else:
+                print('Input IS NOT correct')
+
+
+
+def play_game(computer_board, player_board, scores):
+    while True:
+        print(f"{player_board.name}'s Board")
+        player_board.print()
+        
+        print(f"{computer_board.name}'s Board")
+        computer_board.print()
+
+        # player's part
+        player_guess = make_guess(player_board)
+        print("Player guessed", player_guess)
+        if player_guess:
+            player_result = computer_board.guess(*player_guess)
+            if player_result == "Miss":
+                print("Player missed this time")
+            else:
+                scores["player"] += 1
+                print("Player won this time")
+            
+        
+        # computer's part
+        computer_guess = make_guess(computer_board)
+        print("Computer guessed", computer_guess)
+        if computer_guess:
+            computer_result = player_board.guess(*computer_guess)
+            if computer_result == "Miss":
+                print("Computer missed this time")
+            else:
+                scores["computer"] += 1
+                print("Computer won this time")
         
 
+        print('-' * 35)
+        print("After this round, the score are:")
+        print(f"{player_board.name} {scores['player']} . {computer_board.name} {scores['computer']}")
+        print('-' * 35)
+        
+        # Запитати користувача, чи він бажає продовжувати гру
+        input("Enter any key to continue ")
+        print('-' * 35)
 
-def play_game(computer_board, player_board):
-    print(f"{player_board.name}'s Board")
-    player_board.print()
-    
-    print(f"{computer_board.name}'s Board")
-    computer_board.print()
-    
-    player_guess = make_guess(player_board)
-    print("Player guessed", player_guess)
-    if player_guess:
-        player_board.guess(*player_guess)
-
-
-
-    computer_guess = make_guess(computer_board)
-    print("Computer guessed", computer_guess)
-    if computer_guess:
-        computer_board.guess(*computer_guess)
-
-   
 
 
 
@@ -135,7 +156,6 @@ def new_game():
     print("Top lesft corner is row: 0, col:0")
     print('-' * 35)
     player_name = input("Enter your name...\n")
-    print(player_name)
     print('-' * 35)
 
     """Creates two class instances"""
@@ -146,7 +166,11 @@ def new_game():
         populate_board(player_board)
         populate_board(computer_board)
 
-    play_game(computer_board, player_board)
+    print(player_board.ships)
+    print(computer_board.ships)
+    play_game(computer_board, player_board, scores)
+    
+    
 
 new_game()
 
