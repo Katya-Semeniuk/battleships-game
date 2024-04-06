@@ -48,15 +48,43 @@ def random_point(size):
     
 
 def valid_coordinates(x, y, board):
-    print("Valid coordinate function")
-    # board.add_ships(x, y, type="computer")
+    """ Inside converts all string values into integers
+    Reises ValueError if strings cannot be converted into int"""
+    try:
+        if x < 0 or x >= board.size or y < 0 or y >= board.size:
+            raise ValueError(
+                f"Values must be between 0 and {board.size - 1}"
+            )
+
+    except ValueError as e:
+        print('Coordinates must be integers\n')
+        return False
+
+    return True
+
+
+
+
+    # if isinstance(x, int) and isinstance(y, int):
+    #         print("Coordinates must be integers.")
+    #         return False
+    # elif x < 0 or x >= board.size or y < 0 or y >= board.size:
+    #         print(f"Values must be between 0 and {board.size - 1}")
+    #         return False
+    # elif (x, y) in board.guesses:
+    #         print("You cannot guess the same coordinates more than once.")
+    #         return False
+    # else:
+    #     True
+        
+    
 
 
 def populate_board(board):
     """ Populating board for computer and for player.
     Using a random number from the random_point function, ships are added to the board"""
-    x = random_point(board.size)
-    y = random_point(board.size)
+    x = int(random_point(board.size))
+    y = int(random_point(board.size))
     if (x, y) not in board.ships:
         board.add_ships(x, y)
     
@@ -64,7 +92,24 @@ def populate_board(board):
    
 
 def make_guess(board):
-    print("make guess function")
+    if board.type == 'Computer':
+        x = random_point(board.size)
+        y = random_point(board.size)
+        return x, y
+    else:
+        row = int(input("Guess a row: \n"))
+        column = int(input("Guess a column: \n"))
+        valid_data = valid_coordinates(row, column, board)
+        if valid_data:
+             print("Input is correct")
+        else:
+             print('Input IS NOT correct')
+
+        
+
+    
+    
+
 
 def play_game(computer_board, player_board):
     print(f"{player_board.name}'s Board")
@@ -72,6 +117,10 @@ def play_game(computer_board, player_board):
     
     print("Computer's Board")
     computer_board.print()
+    
+    player_guess = make_guess(player_board)
+    computer_guess = make_guess(computer_board)
+
     
 
 
