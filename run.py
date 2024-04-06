@@ -51,31 +51,20 @@ def valid_coordinates(x, y, board):
     """ Inside converts all string values into integers
     Reises ValueError if strings cannot be converted into int"""
     try:
-        if x < 0 or x >= board.size or y < 0 or y >= board.size:
-            raise ValueError(
+        row = int(x)
+        column = int(y)
+
+        if row < 0 or row >= board.size or column < 0 or column >= board.size:
+            print(
                 f"Values must be between 0 and {board.size - 1}"
             )
+            return False
 
     except ValueError as e:
         print('Coordinates must be integers\n')
         return False
 
     return True
-
-
-
-
-    # if isinstance(x, int) and isinstance(y, int):
-    #         print("Coordinates must be integers.")
-    #         return False
-    # elif x < 0 or x >= board.size or y < 0 or y >= board.size:
-    #         print(f"Values must be between 0 and {board.size - 1}")
-    #         return False
-    # elif (x, y) in board.guesses:
-    #         print("You cannot guess the same coordinates more than once.")
-    #         return False
-    # else:
-    #     True
         
     
 
@@ -83,8 +72,8 @@ def valid_coordinates(x, y, board):
 def populate_board(board):
     """ Populating board for computer and for player.
     Using a random number from the random_point function, ships are added to the board"""
-    x = int(random_point(board.size))
-    y = int(random_point(board.size))
+    x = random_point(board.size)
+    y = random_point(board.size)
     if (x, y) not in board.ships:
         board.add_ships(x, y)
     
@@ -97,18 +86,18 @@ def make_guess(board):
         y = random_point(board.size)
         return x, y
     else:
-        row = int(input("Guess a row: \n"))
-        column = int(input("Guess a column: \n"))
-        valid_data = valid_coordinates(row, column, board)
-        if valid_data:
-             print("Input is correct")
-        else:
-             print('Input IS NOT correct')
+        while True:
+            row = input("Guess a row: \n")
+            column = input("Guess a column: \n")
 
+            if valid_coordinates(row, column, board):
+                print("Input is correct")
+                return int(row), int(column)
+            
+            else:
+             print('Input IS NOT correct')       
+           
         
-
-    
-    
 
 
 def play_game(computer_board, player_board):
@@ -119,7 +108,11 @@ def play_game(computer_board, player_board):
     computer_board.print()
     
     player_guess = make_guess(player_board)
-    computer_guess = make_guess(computer_board)
+    computer_guess = make_guess(player_board)
+
+    print("Player guessed", player_guess)
+    print("computer guessed", computer_guess)
+   
 
     
 
