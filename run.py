@@ -1,3 +1,5 @@
+from random import randint
+
 scores = {"computer": 0, "player": 0}
 
 class Board:
@@ -43,20 +45,38 @@ class Board:
 def random_point(size):
     """Helper function to return a random integer beetween 0 and size"""
     return randint(0, size -1)
+    
 
 def valid_coordinates(x, y, board):
     print("Valid coordinate function")
+    # board.add_ships(x, y, type="computer")
+
 
 def populate_board(board):
-    print("Populate board function")
+    """ Populating board for computer and for player.
+    Using a random number from the random_point function, ships are added to the board"""
+    x = random_point(board.size)
+    y = random_point(board.size)
+    if (x, y) not in board.ships:
+        board.add_ships(x, y)
+    
+    
+   
 
 def make_guess(board):
     print("make guess function")
 
 def play_game(computer_board, player_board):
-    print("Play game function")
+    print(f"{player_board.name}'s Board")
+    player_board.print()
+    
+    print("Computer's Board")
+    computer_board.print()
+    
 
-def new_gane():
+
+
+def new_game():
     """Starts a new game. Sets the board size and number of ships, resets the 
     scores and initializes the boards"""
 
@@ -72,6 +92,7 @@ def new_gane():
     player_name = input("Enter your name...\n")
     print('-' * 35)
 
+    """Creates two class instances"""
     computer_board = Board(size, num_ships, "Computer", type="computer")
     player_board = Board(size, num_ships, player_name, type="player")
 
@@ -81,10 +102,13 @@ def new_gane():
 
     play_game(computer_board, player_board)
 
+new_game()
 
 
 
- new_gane()
+
+
+                                       
 
          
 
