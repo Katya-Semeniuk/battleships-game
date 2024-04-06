@@ -21,7 +21,7 @@ class Board:
            print(''.join(row))
 
      def guess(self, x, y):
-          self.guess.append((x, y))
+          self.guesses.append((x, y))
           self.board[x][y] = 'X'
 
           if (x, y) in self.ships:
@@ -81,20 +81,18 @@ def populate_board(board):
    
 
 def make_guess(board):
-    if board.type == 'Computer':
+    if board.type == 'computer':
         x = random_point(board.size)
         y = random_point(board.size)
         return x, y
     else:
-        while True:
-            row = input("Guess a row: \n")
-            column = input("Guess a column: \n")
+        row = input("Guess a row: \n")
+        column = input("Guess a column: \n")
 
-            if valid_coordinates(row, column, board):
-                print("Input is correct")
+        if valid_coordinates(row, column, board):
                 return int(row), int(column)
             
-            else:
+        else:
              print('Input IS NOT correct')       
            
         
@@ -104,17 +102,22 @@ def play_game(computer_board, player_board):
     print(f"{player_board.name}'s Board")
     player_board.print()
     
-    print("Computer's Board")
+    print(f"{computer_board.name}'s Board")
     computer_board.print()
     
     player_guess = make_guess(player_board)
-    computer_guess = make_guess(player_board)
-
     print("Player guessed", player_guess)
-    print("computer guessed", computer_guess)
-   
+    if player_guess:
+        player_board.guess(*player_guess)
 
-    
+
+
+    computer_guess = make_guess(computer_board)
+    print("Computer guessed", computer_guess)
+    if computer_guess:
+        computer_board.guess(*computer_guess)
+
+   
 
 
 
@@ -132,6 +135,7 @@ def new_game():
     print("Top lesft corner is row: 0, col:0")
     print('-' * 35)
     player_name = input("Enter your name...\n")
+    print(player_name)
     print('-' * 35)
 
     """Creates two class instances"""
