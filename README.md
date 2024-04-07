@@ -1,10 +1,47 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Battlerships game
 
-Welcome,
+Ultimate Battlership is a Python terminal game, which runs in the Code Institute mock terminal on Heroku.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **March 14, 2023**
+Users can try to beat the computer by finding all of the computer's battlerships before the computerfinds their.<br>
 
-## Reminders
+Each battlership occupies one square on the board.
+The game starts after the player writes his name.
+<br>
+
+Here [Link](https://buttleerships-game-41ca3ea47dae.herokuapp.com/) you can open live version of the game.
+Enjoy it!
+
+## How to play
+
+You don't know what a game is?
+Find out the basic information on [Wikipedia](<https://en.wikipedia.org/wiki/Battleship_(game)>) as soon as possible.<br>
+Now you're ready to play!
+
+First, the player needs to enter a name, which will then be displayed to show scores.<br>
+
+After that, a board with a random arrangement of 4 ships will appear. But the location of the ships of the computer is hidden (yes, yes, because this is the point of the game).<br>
+
+Then the player will be asked to guess the location of the enemy ship using the coordinates of the board. The guess will be marked with an X.
+Hits are indicated \*.<br>
+
+A random number is generated for the computer to guess.
+After each round, a scoreboard will appear with the results. <br>
+
+The winner is the one who managed to sink the enemy ship.
+
+## Testing
+
+_The following technical tools were used:_
+
+## Featers
+
+- ### Existing featers
+
+  - #### Random board generation
+
+  - #### The player cannot see the location of the computer's ships
+
+  - #### The player sees the location of his ships, which are marked with the @ sign
 
 - Your code must be placed in the `run.py` file
 - Your dependencies must be placed in the `requirements.txt` file
@@ -25,8 +62,4 @@ Connect your GitHub repository and deploy as normal.
 
 ## Constraints
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
 ---
-
-Happy coding!

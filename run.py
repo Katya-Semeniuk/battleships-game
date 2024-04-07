@@ -96,7 +96,7 @@ def make_guess(board):
             if valid_coordinates(row, column, board):
                 return int(row), int(column)
             else:
-                print('Input IS NOT correct')
+                print('Try again')
 
 
 
@@ -170,8 +170,6 @@ def new_game():
         populate_board(player_board)
         populate_board(computer_board)
 
-    print(player_board.ships)
-    print(computer_board.ships)
     play_game(computer_board, player_board, scores)
     
     
