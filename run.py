@@ -82,6 +82,8 @@ def populate_board(board):
      
            
 def make_guess(board):
+    """ sets random coordinates for the computer's guess
+      and retrieves data from the imput for the user"""
     while True:
         if board.type == 'computer':
             x = random_point(board.size)
@@ -99,6 +101,10 @@ def make_guess(board):
 
 
 def play_game(computer_board, player_board, scores):
+    """ Shows the board of the player and the computer, 
+launches a function to determine the coordinates of the opponent's ship
+and displays the result of the game with the update of points"""
+
     while True:
         print(f"{player_board.name}'s Board")
         player_board.print()
@@ -135,10 +141,8 @@ def play_game(computer_board, player_board, scores):
         print(f"{player_board.name} {scores['player']} . {computer_board.name} {scores['computer']}")
         print('-' * 35)
         
-        # Запитати користувача, чи він бажає продовжувати гру
         input("Enter any key to continue ")
         print('-' * 35)
-
 
 
 
@@ -173,18 +177,6 @@ def new_game():
     
 
 new_game()
-
-
-
-
-
-                                       
-
-         
-
-
-     
-
 
     
            
