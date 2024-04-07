@@ -2,6 +2,8 @@
 
 ---
 
+![An image that shows how the app looks on different size](./doc/readme-content/screenshot.png)
+
 Ultimate Battlership is a Python terminal game, which runs in the Code Institute mock terminal on Heroku.
 
 Users can try to beat the computer by finding all of the computer's battlerships before the computerfinds their.<br>
@@ -107,3 +109,5 @@ Code Institute's Readme example file for inspiration;<br>
 Wikipedia for basic information about the game and for a picture of an example board<br>
 
 [PythonChecker](https://www.pythonchecker.com/) to check the validation of the Python code
+
+[Mockup screenshot](https://ui.dev/amiresponsive) site image on different devices
