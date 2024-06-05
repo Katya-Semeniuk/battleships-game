@@ -90,8 +90,8 @@ def make_guess(board):
             y = random_point(board.size)
             return x, y
         else:
-            row = input("Guess a row: \n")
-            column = input("Guess a column: \n")
+            row = input("Guess a row : \n (Values must be integer and be between 0 and 4) \n ")
+            column = input("Guess a column : \n(Values must be integer and be between 0 and 4) \n ")
 
             if valid_coordinates(row, column, board):
                 return int(row), int(column)
@@ -145,6 +145,18 @@ and displays the result of the game with the update of points"""
         print('-' * 35)
 
 
+"""Checks if the user_name is valid (not an empty string)."""
+def valid_name(user_name):
+
+    if(user_name == ''):
+        print("Sorry, but it can't be empty string. Try again.")
+        
+        return False
+    else:
+        print(f"Hello, {user_name}")
+        return True
+
+
 
 def new_game():
     """Starts a new game. Sets the board size and number of ships, resets the 
@@ -159,7 +171,12 @@ def new_game():
     print(f"Board Size: {size}. Number of ships: {num_ships}")
     print("Top lesft corner is row: 0, col:0")
     print('-' * 35)
-    player_name = input("Enter your name...\n")
+
+    user_name = ""
+    while not valid_name(user_name):
+         user_name = input("Enter your name... \n")
+    
+    player_name = user_name
     print('-' * 35)
 
     """Creates two class instances"""
