@@ -96,6 +96,8 @@ The winner is the one who managed to sink the enemy ship.
 
 - There was an error in the try valid_coordinates part, namely, determining the length of strings. Therefore, before checking, I made the input value an integer.
 
+- When testing the function that checks whether the user has not entered anything when prompted for a name, I noticed that there was still an option to send an empty space. Adding <code>strip()</code> to user entered input solved the issue
+
 #### _Remaining bugs:_
 
 - no remaining bugs
