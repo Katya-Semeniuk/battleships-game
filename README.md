@@ -49,12 +49,26 @@ The winner is the one who managed to sink the enemy ship.
 
 ![An image that shows how the game's boards look](./doc/readme-content/boards.png)
 
+- #### Hints about the data entry format are displayed before the user makes their choice.
+
+  ![An image that shows how the game's boards look](./doc/readme-content/hints.png)
+
 - #### Input validation;
+
+  - #### You cannot enter empty string instead of name;
+
+    ![An image that shows the name validation](./doc/readme-content/validate_name.png)
 
   - #### You cannot enter coordinates outside the size of the grid;
 
+    ![An image that shows the validation of an input](./doc/readme-content/numbers_validation.png)
+
   - #### You must enter numbers;
-    ![An image that shows the validation of an input](./doc/readme-content/validation.png)
+
+    ![An image that shows the validation of an input](./doc/readme-content/letters_validation.png)
+
+  - #### Checking the numbers that have already been entered and displaying a message;
+    ![An image that shows the validation of an input](./doc/readme-content/existing_data.png)
 
 ### _Future featers:_
 
