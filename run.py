@@ -153,7 +153,6 @@ def valid_name(user_name):
         
         return False
     else:
-        print(f"Hello, {user_name}")
         return True
 
 
