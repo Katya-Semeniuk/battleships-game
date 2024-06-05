@@ -153,6 +153,7 @@ def valid_name(user_name):
         
         return False
     else:
+        print(f"Hello, {user_name}")
         return True
 
 
@@ -171,7 +172,7 @@ def new_game():
     print("Top lesft corner is row: 0, col:0")
     print('-' * 35)
 
-    user_name = ""
+    user_name = input("Enter your name... \n")
     while not valid_name(user_name):
          user_name = input("Enter your name... \n")
     
