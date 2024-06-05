@@ -56,12 +56,12 @@ def valid_coordinates(x, y, board):
 
         if row < 0 or row >= board.size or column < 0 or column >= board.size:
             print(
-                f"Values must be between 0 and {board.size - 1}"
+                f"Values must be between 0 and {board.size - 1}. Please, try again"
             )
             return False
 
     except ValueError as e:
-        print('Coordinates must be integers\n')
+        print('Coordinates must be integers. Please, try again\n')
         return False
 
     return True
@@ -90,11 +90,17 @@ def make_guess(board):
             y = random_point(board.size)
             return x, y
         else:
-            row = input("Guess a row : \n (Values must be integer and be between 0 and 4) \n ")
-            column = input("Guess a column : \n(Values must be integer and be between 0 and 4) \n ")
+            row = input("Guess a row : \n (Coordinates must be integer and be between 0 and 4) \n ")
+            column = input("Guess a column : \n(Coordinates must be integer and be between 0 and 4) \n ")
 
             if valid_coordinates(row, column, board):
-                return int(row), int(column)
+                coordinates = (int(row), int(column))
+                if coordinates not in board.guesses:
+                    board.guesses.append(coordinates)
+                    return coordinates
+                else:
+                    print("You have already guessed these coordinates. Try again.")
+                
             else:
                 print('Try again')
 
@@ -148,7 +154,7 @@ and displays the result of the game with the update of points"""
 """Checks if the user_name is valid (not an empty string)."""
 def valid_name(user_name):
 
-    if(user_name == ''):
+    if(user_name.strip() == ''):
         print("Sorry, but it can't be empty string. Try again.")
         
         return False
