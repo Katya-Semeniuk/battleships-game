@@ -81,6 +81,9 @@ The winner is the one who managed to sink the enemy ship.
 ---
 
 - passed the code through PEP8 and confirmed there are no problems
+  ![An image that shows testing of the app](./doc/readme-content/python-linter.png)
+
+- passed the code through Python Checker and confirmed there are no problems
   ![An image that shows testing of the app](./doc/readme-content/testing.png)
 
 - given invalid input
