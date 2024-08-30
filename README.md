@@ -128,5 +128,5 @@ Code Institute's Readme example file for inspiration;<br>
 Wikipedia for basic information about the game and for a picture of an example board<br>
 
 [PythonChecker](https://www.pythonchecker.com/) to check the validation of the Python code
-
+[CI Python Linter](https://pep8ci.herokuapp.com) to check the validation of the Python code
 [Mockup screenshot](https://ui.dev/amiresponsive) site image on different devices
