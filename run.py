@@ -54,13 +54,13 @@ def valid_coordinates(x, y, board):
 
         if row < 0 or row >= board.size or column < 0 or column >= board.size:
             print(
-                f"Values must be between 0 and {
-                    board.size - 1}. Please, try again"
+                "Values must be between 0 and{} Please, try again.".format(
+                    board.size - 1)
             )
             return False
 
     except ValueError as e:
-        print('Coordinates must be integers. Please, try again\n')
+        print('Important! Coordinates must be integers. Please, try again\n')
         return False
 
     return True
@@ -177,7 +177,7 @@ def new_game():
     print('-' * 35)
     print("Welcome to ULTIMATE BUTTLESHIPS!")
     print(f"Board Size: {size}. Number of ships: {num_ships}")
-    print("Top lesft corner is row: 0, col:0")
+    print("Top left corner is row: 0, col:0")
     print('-' * 35)
 
     user_name = input("Enter your name... \n")
