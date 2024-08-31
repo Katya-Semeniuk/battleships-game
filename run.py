@@ -5,7 +5,7 @@ scores = {"computer": 0, "player": 0}
 
 class Board:
     """Main Board Class. Sets board size, the number of ships,
-    the player`s name and the board type (player board or computer)
+    the players name and the board type (player board or computer)
     Has methods for adding ships and quesses and printing the board"""
 
     def __init__(self, size, num_ships, name, type):
@@ -109,10 +109,7 @@ def make_guess(board):
 
 
 def play_game(computer_board, player_board, scores):
-    """ Shows the board of the player and the computer,
-    launches a function to determine the coordinates of the opponent's ship
-    and displays the result of the game with the update of points
-    """
+    """Main game logic for one round with option to continue or quit."""
 
     while True:
         print(f"{player_board.name}'s Board")
@@ -121,7 +118,7 @@ def play_game(computer_board, player_board, scores):
         print(f"{computer_board.name}'s Board")
         computer_board.print()
 
-        # player's part
+        # Player's turn
         player_guess = make_guess(player_board)
         print("Player guessed", player_guess)
         if player_guess:
@@ -132,7 +129,7 @@ def play_game(computer_board, player_board, scores):
                 scores["player"] += 1
                 print("Player won this time")
 
-        # computer's part
+        # Computer's turn
         computer_guess = make_guess(computer_board)
         print("Computer guessed", computer_guess)
         if computer_guess:
@@ -143,14 +140,19 @@ def play_game(computer_board, player_board, scores):
                 scores["computer"] += 1
                 print("Computer won this time")
 
+        # Display scores after round
         print('-' * 35)
-        print("After this round, the score are:")
+        print("After this round, the scores are:")
         print(f"{player_board.name} {scores['player']} . "
               f"{computer_board.name} {scores['computer']}")
         print('-' * 35)
 
-        input("Enter any key to continue ")
-        print('-' * 35)
+        # Ask if player wants to continue or quit
+        choice = input(
+            "Do you want to play another round? (y/n): ").strip().lower()
+        if choice != 'y':
+            print("Game over! Thank you for playing.")
+            break
 
 
 """Checks if the user_name is valid (not an empty string)."""
@@ -160,7 +162,6 @@ def valid_name(user_name):
 
     if (user_name == ''):
         print("Sorry, but it can't be empty string. Try again.")
-
         return False
     else:
         print(f"Hello, {user_name}")
